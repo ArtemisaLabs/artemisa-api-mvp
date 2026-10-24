@@ -1,0 +1,2 @@
+ALTER TABLE enrollments
+DROP CONSTRAINT fk_enrollments_class_group_branch;

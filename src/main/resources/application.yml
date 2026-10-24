@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:artemisa_dev}
+    username: ${DB_USER:artemisa_app}
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+security:
+  jwt:
+    secret-base64: ${JWT_SECRET_BASE64}
+
+reports:
+  storage-directory: ${REPORT_STORAGE_DIRECTORY:./var/reports}
+  pending-scan-initial-delay-ms: ${REPORT_PENDING_SCAN_INITIAL_DELAY_MS:10000}
+  pending-scan-delay-ms: ${REPORT_PENDING_SCAN_DELAY_MS:60000}
